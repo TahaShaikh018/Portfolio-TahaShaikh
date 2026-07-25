@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: #060b13;
+    color: #e2e8f0;
+    font-family: 'Share Tech Mono', 'JetBrains Mono', monospace;
+    background-image: 
+      radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
+    background-attachment: fixed;
+  }
+
+  /* Custom styled scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #04070d;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00f0ff;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00ff66;
+  }
+}
+
+/* Watch Dogs ctOS Glassmorphism Panel */
+.glass-panel {
+  background: rgba(10, 17, 30, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 240, 255, 0.04);
+  position: relative;
+}
+
+.glass-panel-green {
+  background: rgba(10, 24, 20, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 255, 102, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(0, 255, 102, 0.05);
+}
+
+.glass-nav {
+  background: rgba(6, 11, 19, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 4px 25px rgba(0, 240, 255, 0.15);
+}
+
+/* Gradient Text Effect */
+.gradient-text {
+  background: linear-gradient(90deg, #00f0ff 0%, #00ff66 50%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-alt {
+  background: linear-gradient(90deg, #00ff66 0%, #00f0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Watch Dogs Card Glow & Window Dots */
+.glow-card {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.glow-card:hover {
+  border-color: rgba(0, 240, 255, 0.7);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Scanline Effect Overlay */
+.scanlines {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 2;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Custom Cursor Hide default pointer when active */
+@media (pointer: fine) {
+  body.custom-cursor-active a,
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"] {
+    cursor: none !important;
+  }
+}
