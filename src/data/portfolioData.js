@@ -46,7 +46,7 @@ export const portfolioData = {
   // ---------------------------------------------------------------------------
   quickStats: [
     { label: "Degree Track", value: "B.Tech" },
-    { label: "AI Projects", value: "4 Projects" },
+    { label: "AI Projects", value: "5 Projects" },
     { label: "Research Papers", value: "1 Published" },
     { label: "Certifications", value: "9 Verified" },
   ],
@@ -311,6 +311,17 @@ export const portfolioData = {
       tags: ["Python", "Speech-to-Text", "Google Cloud", "NLP", "Generative AI"],
       demoUrl: "https://github.com/TahaShaikh018/MeetMate",
       githubUrl: "https://github.com/TahaShaikh018/MeetMate",
+      featured: true,
+    },
+    {
+      id: "project-5",
+      title: "SENTINEL AI – Autonomous Threat Engine",
+      category: "Agentic AI & Security",
+      description: "Autonomous cyber deception platform & WhatsApp honeypot intercepting scammers via Chrome MV3 extension, engaging with victim personas, injecting trap links, and unmasking IP & geolocation telemetry.",
+      image: "./ctos_sentinel.png",
+      tags: ["Python", "FastAPI", "React", "Chrome MV3", "Agentic AI", "Cybersecurity", "LLM Security"],
+      demoUrl: "https://github.com/TahaShaikh018/SENTINEL",
+      githubUrl: "https://github.com/TahaShaikh018/SENTINEL",
       featured: true,
     }
   ],
