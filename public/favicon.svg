@@ -1,12 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06b6d4" />
-      <stop offset="50%" stop-color="#8b5cf6" />
-      <stop offset="100%" stop-color="#ec4899" />
+    <linearGradient id="ctos-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#38bdf8" />
     </linearGradient>
   </defs>
-  <rect width="100" height="100" rx="28" fill="#090d16" />
-  <rect x="5" y="5" width="90" height="90" rx="23" fill="none" stroke="url(#grad)" stroke-width="4" />
-  <text x="50%" y="58%" font-family="Space Grotesk, sans-serif" font-weight="bold" font-size="42" fill="url(#grad)" text-anchor="middle" dominant-baseline="middle">AR</text>
+  <!-- Background Shield/Badge -->
+  <rect width="100" height="100" rx="20" fill="#060b13" />
+  <rect x="4" y="4" width="92" height="92" rx="16" fill="none" stroke="url(#ctos-grad)" stroke-width="5" />
+  <rect x="10" y="10" width="80" height="80" rx="12" fill="#091322" stroke="#00f0ff" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.7" />
+
+  <!-- Operative Initials: TS -->
+  <text x="50" y="58" font-family="'JetBrains Mono', 'Share Tech Mono', monospace" font-weight="900" font-size="44" fill="url(#ctos-grad)" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">TS</text>
+
+  <!-- Corner HUD Cyber Dots -->
+  <circle cx="16" cy="16" r="2.5" fill="#00f0ff" />
+  <circle cx="84" cy="16" r="2.5" fill="#10b981" />
+  <circle cx="16" cy="84" r="2.5" fill="#10b981" />
+  <circle cx="84" cy="84" r="2.5" fill="#00f0ff" />
 </svg>
