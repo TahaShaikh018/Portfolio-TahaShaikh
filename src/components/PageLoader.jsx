@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Activity } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { cyberAudio } from '../utils/cyberAudio';
 
 export const PageLoader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -36,8 +37,9 @@ export const PageLoader = ({ onComplete }) => {
       setBootText('ACCESS_GRANTED // INITIALIZING_INTERFACE...');
     }
 
-    // Trigger onComplete when 100% reached
+    // Trigger onComplete and play boot sound when 100% reached
     if (progress >= 100) {
+      cyberAudio.playBootSound();
       const timeout = setTimeout(() => {
         if (onComplete) onComplete();
       }, 400);

@@ -15,6 +15,7 @@ import { CertificationsSection } from './components/CertificationsSection';
 import { ResumeSection } from './components/ResumeSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
+import { cyberAudio } from './utils/cyberAudio';
 
 export function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +26,19 @@ export function App() {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
+  }, []);
+
+  // Global listener for mechanical audio feedback on clicks
+  useEffect(() => {
+    const handleGlobalClick = (e) => {
+      const target = e.target.closest('button, a, input, [role="button"], label, select');
+      if (target) {
+        cyberAudio.playClickSound();
+      }
+    };
+
+    window.addEventListener('click', handleGlobalClick);
+    return () => window.removeEventListener('click', handleGlobalClick);
   }, []);
 
   const handleComplete = useCallback(() => {

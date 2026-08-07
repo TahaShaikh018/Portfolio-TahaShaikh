@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail, FileText, Terminal, Shield } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, FileText, Terminal, Shield, Volume2, VolumeX } from 'lucide-react';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { portfolioData } from '../data/portfolioData';
+import { cyberAudio } from '../utils/cyberAudio';
 
 const navItems = [
   { id: 'hero', label: '// 01_MAIN' },
@@ -17,6 +18,7 @@ const navItems = [
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMuted, setIsMuted] = useState(cyberAudio.isMuted);
   
   const sectionIds = navItems.map(item => item.id);
   const activeSection = useActiveSection(sectionIds, 180);
@@ -29,7 +31,13 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleToggleSound = () => {
+    const nextState = cyberAudio.toggleMute();
+    setIsMuted(nextState);
+  };
+
   const scrollToSection = (id) => {
+    cyberAudio.playClickSound();
     setMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
@@ -92,10 +100,25 @@ export const Navbar = () => {
 
         {/* Action Controls */}
         <div className="flex items-center gap-3 shrink-0">
+          {/* Cyber Mechanical Sound SFX Toggle */}
+          <button
+            onClick={handleToggleSound}
+            title={isMuted ? 'Unmute Mechanical Sound Effects' : 'Mute Mechanical Sound Effects'}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded font-mono text-xs font-bold transition-all border ${
+              !isMuted
+                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.3)]'
+                : 'bg-slate-900 border-slate-700 text-slate-400 hover:text-cyan-400'
+            }`}
+          >
+            {!isMuted ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+            <span className="hidden sm:inline">{!isMuted ? 'SFX: ON' : 'SFX: OFF'}</span>
+          </button>
+
           {/* Resume Quick Button */}
           <a
             href={portfolioData.personal.resumePdf}
             download
+            onClick={() => cyberAudio.playClickSound()}
             className="hidden sm:flex items-center gap-2 px-4 py-2 text-xs font-mono font-bold tracking-wider rounded bg-cyan-400/15 border border-cyan-400/60 text-cyan-400 hover:bg-cyan-400 hover:text-black transition-all shadow-[0_0_15px_rgba(0,240,255,0.3)] uppercase"
           >
             <FileText className="w-4 h-4" />
@@ -104,7 +127,10 @@ export const Navbar = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => {
+              cyberAudio.playClickSound();
+              setMobileMenuOpen(!mobileMenuOpen);
+            }}
             aria-label="Toggle Menu"
             className="lg:hidden p-2.5 rounded bg-slate-900 border border-cyan-500/50 text-cyan-400 focus:outline-none"
           >
@@ -138,13 +164,13 @@ export const Navbar = () => {
               ))}
               
               <div className="pt-4 mt-2 border-t border-slate-800 flex items-center justify-around text-slate-400">
-                <a href={portfolioData.socialLinks.github} target="_blank" rel="noreferrer" className="p-2 hover:text-cyan-400">
+                <a href={portfolioData.socialLinks.github} target="_blank" rel="noreferrer" onClick={() => cyberAudio.playClickSound()} className="p-2 hover:text-cyan-400">
                   <Github className="w-5 h-5" />
                 </a>
-                <a href={portfolioData.socialLinks.linkedin} target="_blank" rel="noreferrer" className="p-2 hover:text-cyan-400">
+                <a href={portfolioData.socialLinks.linkedin} target="_blank" rel="noreferrer" onClick={() => cyberAudio.playClickSound()} className="p-2 hover:text-cyan-400">
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href={`mailto:${portfolioData.socialLinks.email}`} className="p-2 hover:text-cyan-400">
+                <a href={`mailto:${portfolioData.socialLinks.email}`} onClick={() => cyberAudio.playClickSound()} className="p-2 hover:text-cyan-400">
                   <Mail className="w-5 h-5" />
                 </a>
               </div>
